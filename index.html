@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kim Keewon | Peter Pan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -26,13 +26,7 @@
         }
 
         .text-shadow {
-            text-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-shadow: 0 4px 6px rgba(0,0,0,0.5);
         }
 
         /* Animation */
@@ -45,16 +39,31 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 300px;
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-200 selection:text-emerald-900">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300 shadow-sm" id="navbar">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold tracking-tighter hover:text-emerald-600 transition">
+            <!-- Logo -->
+            <a href="#" class="text-xl md:text-2xl font-bold tracking-tighter hover:text-emerald-600 transition z-50">
                 <span class="text-emerald-600">K</span>EEWON
             </a>
+            
+            <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-500">
                 <a href="#about" class="hover:text-emerald-600 transition">Story</a>
                 <a href="#career" class="hover:text-emerald-600 transition">Career</a>
@@ -62,75 +71,82 @@
                 <a href="#creator" class="hover:text-emerald-600 transition">Creator</a>
                 <a href="#contact" class="hover:text-emerald-600 transition">Contact</a>
             </div>
-            <button class="md:hidden text-slate-600 text-xl" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="md:hidden text-slate-600 text-2xl focus:outline-none z-50 p-2" onclick="toggleMenu()" aria-label="Toggle Menu">
+                <i class="fas fa-bars" id="menu-icon"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 absolute w-full shadow-lg">
-            <div class="flex flex-col space-y-4 text-center font-medium text-slate-600">
-                <a href="#about" onclick="toggleMenu()">Story</a>
-                <a href="#career" onclick="toggleMenu()">Career</a>
-                <a href="#music" onclick="toggleMenu()">Music</a>
-                <a href="#creator" onclick="toggleMenu()">Creator</a>
-                <a href="#contact" onclick="toggleMenu()">Contact</a>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="bg-white border-b border-slate-100 shadow-lg md:hidden absolute w-full top-full left-0">
+            <div class="flex flex-col p-6 space-y-4 text-center font-medium text-slate-600">
+                <a href="#about" class="block py-2 hover:text-emerald-600 active:text-emerald-700" onclick="toggleMenu()">Story</a>
+                <a href="#career" class="block py-2 hover:text-emerald-600 active:text-emerald-700" onclick="toggleMenu()">Career</a>
+                <a href="#music" class="block py-2 hover:text-emerald-600 active:text-emerald-700" onclick="toggleMenu()">Music</a>
+                <a href="#creator" class="block py-2 hover:text-emerald-600 active:text-emerald-700" onclick="toggleMenu()">Creator</a>
+                <a href="#contact" class="block py-2 hover:text-emerald-600 active:text-emerald-700" onclick="toggleMenu()">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative h-screen flex items-center justify-center overflow-hidden hero-pattern text-white">
+    <header class="relative h-[100dvh] flex items-center justify-center overflow-hidden hero-pattern text-white">
         <!-- Background Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/50 to-slate-900"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/60 to-slate-900"></div>
         
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto fade-up">
-            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-emerald-400/30 bg-emerald-900/20 text-emerald-300 text-sm tracking-widest uppercase font-medium backdrop-blur-sm">
+        <div class="relative z-10 text-center px-4 w-full max-w-4xl mx-auto fade-up">
+            <div class="inline-block mb-4 px-3 py-1 rounded-full border border-emerald-400/30 bg-emerald-900/40 text-emerald-300 text-xs md:text-sm tracking-widest uppercase font-medium backdrop-blur-sm">
                 Singer-Songwriter & Multi-Entertainer
             </div>
-            <h1 class="serif text-5xl md:text-7xl font-bold mb-6 leading-tight text-shadow">
+            <h1 class="serif text-4xl md:text-7xl font-bold mb-6 leading-tight text-shadow break-keep">
                 꿈과 현실 사이에서<br>
                 <span class="italic text-emerald-400">노래하는 피터팬</span>
             </h1>
-            <p class="text-slate-300 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto break-keep">
+            <p class="text-slate-300 text-base md:text-xl font-light mb-10 max-w-xs md:max-w-2xl mx-auto break-keep leading-relaxed">
                 담백한 목소리로 동화 같은 이야기를 들려주는 아티스트, 김기원입니다.
             </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#music" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full transition shadow-lg shadow-emerald-900/20 font-medium">
+            <div class="flex flex-col sm:flex-row justify-center gap-4 px-8 sm:px-0">
+                <a href="#music" class="w-full sm:w-auto px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full transition shadow-lg shadow-emerald-900/20 font-medium text-sm md:text-base">
                     Listen to Music
                 </a>
-                <a href="#contact" class="px-8 py-3 border border-slate-600 hover:bg-white/10 text-white rounded-full transition font-medium">
+                <a href="#contact" class="w-full sm:w-auto px-8 py-3 border border-slate-600 hover:bg-white/10 text-white rounded-full transition font-medium text-sm md:text-base">
                     Contact Me
                 </a>
             </div>
         </div>
         
         <!-- Scroll Down Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-emerald-400/50">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-emerald-400/50">
             <i class="fas fa-chevron-down text-2xl"></i>
         </div>
     </header>
 
     <!-- About Section -->
-    <section id="about" class="py-24 px-6 bg-white">
-        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div class="relative fade-up">
-                <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
-                    <!-- Placeholder for Profile Image -->
-                    <img src="keewon.jpeg" alt="Kim Keewon Profile" class="object-cover w-full h-full hover:scale-105 transition duration-700">
+    <section id="about" class="py-16 md:py-24 px-6 bg-white">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="relative fade-up order-first md:order-first">
+                <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl relative group">
+                     <!-- Placeholder for Profile Image: Change the URL below to your image -->
+                    <img src="keewon.jpeg" alt="Kim Keewon Profile" class="object-cover w-full h-full group-hover:scale-105 transition duration-700">
+                    <!-- Mobile Decorative Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent md:hidden"></div>
                 </div>
-                <!-- Decorative Element -->
-                <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-emerald-50 rounded-full -z-10 blur-2xl"></div>
+                <!-- Decorative Element (Desktop Only) -->
+                <div class="hidden md:block absolute -bottom-6 -right-6 w-48 h-48 bg-emerald-50 rounded-full -z-10 blur-2xl"></div>
             </div>
             
             <div class="fade-up delay-100">
-                <h2 class="serif text-4xl font-bold text-slate-900 mb-6">Who is <span class="text-emerald-600">Keewon?</span></h2>
-                <div class="space-y-6 text-slate-600 leading-relaxed text-lg">
+                <h2 class="serif text-3xl md:text-4xl font-bold text-slate-900 mb-6">Who is <span class="text-emerald-600">Keewon?</span></h2>
+                <div class="space-y-6 text-slate-600 leading-relaxed text-base md:text-lg text-justify md:text-left">
                     <p>
                         현실의 차가움과 꿈의 낭만 사이에서 자신만의 색깔을 보여주는 싱어송라이터입니다.
                         노래하는 가수, 곡을 만드는 프로듀서, 그리고 영상 콘텐츠를 만드는 크리에이터까지 다양한 영역에서 활동하고 있습니다.
                     </p>
+                    
                     <div class="grid grid-cols-1 gap-4 mt-8">
-                        <div class="flex items-start">
+                        <!-- Card 1 -->
+                        <div class="flex items-start p-3 rounded-lg hover:bg-slate-50 transition">
                             <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 mt-1">
                                 <i class="fas fa-microphone"></i>
                             </div>
@@ -139,7 +155,8 @@
                                 <p class="text-sm text-slate-500">담백한 목소리, 진솔한 이야기</p>
                             </div>
                         </div>
-                        <div class="flex items-start">
+                        <!-- Card 2 -->
+                        <div class="flex items-start p-3 rounded-lg hover:bg-slate-50 transition">
                             <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mt-1">
                                 <i class="fas fa-music"></i>
                             </div>
@@ -148,7 +165,8 @@
                                 <p class="text-sm text-slate-500">인디 아티스트 프로듀싱 & 뮤지컬 작곡</p>
                             </div>
                         </div>
-                        <div class="flex items-start">
+                        <!-- Card 3 -->
+                        <div class="flex items-start p-3 rounded-lg hover:bg-slate-50 transition">
                             <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mt-1">
                                 <i class="fas fa-video"></i>
                             </div>
@@ -160,84 +178,93 @@
                     </div>
                 </div>
                 
-                <!-- Personal Info based on PDF -->
-                <div class="mt-10 pt-8 border-t border-slate-200 grid grid-cols-2 gap-4 text-sm text-slate-500">
-                    <div>
-                        <span class="block font-bold text-slate-800">Birth</span>
-                        1991. 08. 05
+                <!-- Personal Info -->
+                <div class="mt-10 pt-8 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-500">
+                    <div class="flex justify-between sm:block">
+                        <span class="font-bold text-slate-800">Birth</span>
+                        <span>1991. 08. 05</span>
                     </div>
-                    <div>
-                        <span class="block font-bold text-slate-800">Education</span>
-                        경희대 동서의과학과 졸업
+                    <div class="flex justify-between sm:block">
+                        <span class="font-bold text-slate-800">Education</span>
+                        <span>경희대 동서의과학과 졸업</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Career Highlights -->
-    <section id="career" class="py-24 bg-slate-50">
+    <!-- Career Highlights (Responsive Timeline) -->
+    <section id="career" class="py-16 md:py-24 bg-slate-50">
         <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16 fade-up">
+            <div class="text-center mb-12 md:mb-16 fade-up">
                 <span class="text-emerald-600 font-bold tracking-widest text-sm uppercase">Timeline</span>
                 <h2 class="serif text-3xl md:text-4xl font-bold mt-2 text-slate-900">Major Career</h2>
             </div>
 
+            <!-- Timeline Container: Left line on mobile, Center line on desktop -->
             <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-slate-200 before:left-0 md:before:left-1/2">
                 
                 <!-- Item 1 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active fade-up">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-emerald-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 absolute left-0 md:left-1/2 z-10">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-up">
+                    <!-- Icon Bubble -->
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-emerald-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 absolute left-0 md:left-1/2 z-10 transform -translate-y-1/2 md:translate-y-0 top-1/2 md:top-auto md:relative">
                         <i class="fas fa-tv text-white text-xs"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-slate-800">KBS 아침마당</span>
-                            <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-1 rounded">2023</span>
+                    <!-- Content Card -->
+                    <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 bg-white p-5 md:p-6 rounded-xl shadow-sm border border-slate-100 relative">
+                        <!-- Mobile Arrow -->
+                        <div class="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-white md:hidden"></div>
+                        
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-1">
+                            <span class="font-bold text-slate-800 text-lg">KBS 아침마당</span>
+                            <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-1 rounded w-fit">2023</span>
                         </div>
-                        <p class="text-slate-600 text-sm">'도전 꿈의 무대' 출연. <br>친근함 속 매력이 가득한 출연자로 화제.</p>
+                        <p class="text-slate-600 text-sm break-keep">'도전 꿈의 무대' 출연. <br class="hidden md:block">친근함 속 매력이 가득한 출연자로 화제.</p>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active fade-up">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-800 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 absolute left-0 md:left-1/2 z-10">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-up">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-800 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 absolute left-0 md:left-1/2 z-10 transform -translate-y-1/2 md:translate-y-0 top-1/2 md:top-auto md:relative">
                         <i class="fas fa-film text-white text-xs"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-slate-800">KBS 다큐온</span>
-                            <span class="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-1 rounded">2021</span>
+                    <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 bg-white p-5 md:p-6 rounded-xl shadow-sm border border-slate-100 relative">
+                         <div class="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-white md:hidden"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-1">
+                            <span class="font-bold text-slate-800 text-lg">KBS 다큐온</span>
+                            <span class="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-1 rounded w-fit">2021</span>
                         </div>
-                        <p class="text-slate-600 text-sm">'마음을 잇다' 편 출연. <br>싱어송라이터로서의 삶과 음악을 조명.</p>
+                        <p class="text-slate-600 text-sm break-keep">'마음을 잇다' 편 출연. <br class="hidden md:block">싱어송라이터로서의 삶과 음악을 조명.</p>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active fade-up">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-800 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 absolute left-0 md:left-1/2 z-10">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-up">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-800 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 absolute left-0 md:left-1/2 z-10 transform -translate-y-1/2 md:translate-y-0 top-1/2 md:top-auto md:relative">
                         <i class="fas fa-broadcast-tower text-white text-xs"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-slate-800">KBS Joy 무엇이든 물어보살</span>
-                            <span class="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-1 rounded">2020</span>
+                    <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 bg-white p-5 md:p-6 rounded-xl shadow-sm border border-slate-100 relative">
+                        <div class="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-white md:hidden"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-1">
+                            <span class="font-bold text-slate-800 text-lg">KBS Joy 물어보살</span>
+                            <span class="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-1 rounded w-fit">2020</span>
                         </div>
-                        <p class="text-slate-600 text-sm">92-93화 출연. <br>솔직하고 유쾌한 입담으로 시청자와 소통.</p>
+                        <p class="text-slate-600 text-sm break-keep">92-93화 출연. <br class="hidden md:block">솔직하고 유쾌한 입담으로 시청자와 소통.</p>
                     </div>
                 </div>
 
                 <!-- Item 4 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active fade-up">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-800 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 absolute left-0 md:left-1/2 z-10">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-up">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-800 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 absolute left-0 md:left-1/2 z-10 transform -translate-y-1/2 md:translate-y-0 top-1/2 md:top-auto md:relative">
                         <i class="fas fa-compact-disc text-white text-xs"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="font-bold text-slate-800">Debut & Portfolio</span>
-                            <span class="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-1 rounded">Since 2017</span>
+                    <div class="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 bg-white p-5 md:p-6 rounded-xl shadow-sm border border-slate-100 relative">
+                        <div class="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-white md:hidden"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-1">
+                            <span class="font-bold text-slate-800 text-lg">Debut & Portfolio</span>
+                            <span class="text-xs text-slate-500 font-bold bg-slate-100 px-2 py-1 rounded w-fit">Since 2017</span>
                         </div>
-                        <p class="text-slate-600 text-sm">
+                        <p class="text-slate-600 text-sm break-keep">
                             1개의 미니앨범과 12곡의 싱글 발매.<br>
                             유키카, 김미정 '긴밤' 작사/작곡 참여.
                         </p>
@@ -248,161 +275,155 @@
         </div>
     </section>
 
-    <!-- Discography Section -->
-    <section id="music" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <!-- Background decorative blobs -->
+    <!-- Discography Section (Optimized Grid) -->
+    <section id="music" class="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-20">
             <div class="absolute top-10 left-10 w-64 h-64 bg-emerald-600 rounded-full blur-3xl"></div>
             <div class="absolute bottom-10 right-10 w-80 h-80 bg-blue-800 rounded-full blur-3xl"></div>
         </div>
 
         <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-up">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 fade-up">
                 <div>
-                    <h2 class="serif text-4xl font-bold mb-2">Discography</h2>
-                    <p class="text-slate-400">김기원의 대표곡을 들어보세요.</p>
+                    <h2 class="serif text-3xl md:text-4xl font-bold mb-2">Discography</h2>
+                    <p class="text-slate-400 text-sm md:text-base">앨범 커버를 클릭하면 음악을 감상할 수 있습니다.</p>
                 </div>
-                <a href="https://www.youtube.com/@keewon" target="_blank" class="mt-4 md:mt-0 text-emerald-400 hover:text-emerald-300 transition text-sm font-bold">
-                    More on YouTube <i class="fas fa-arrow-right ml-1"></i>
+                <a href="https://www.youtube.com/@keewon" target="_blank" class="mt-4 md:mt-0 inline-flex items-center text-emerald-400 hover:text-emerald-300 transition text-sm font-bold border border-emerald-500/30 px-4 py-2 rounded-full bg-emerald-500/10">
+                    More on YouTube <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-6">
+            <!-- Grid: 1 col (mobile) -> 2 cols (tablet) -> 4 cols (desktop) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <!-- Song 1 -->
-                <div class="group cursor-pointer fade-up delay-100">
-                    <div class="relative aspect-square bg-slate-800 rounded-lg overflow-hidden mb-4 shadow-lg border border-slate-700 group-hover:border-emerald-500 transition">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop" alt="나의 바다" class="object-cover w-full h-full group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+                <!-- href="" 안에 유튜브나 멜론 링크를 넣으세요 -->
+                <a href="https://youtu.be/rMW_3arSxw0?si=fhoTpdUrqhMpFwMh" target="_blank" class="group block fade-up delay-100 flex items-center md:block bg-slate-800 md:bg-transparent p-3 md:p-0 rounded-lg md:rounded-none border border-slate-700 md:border-none hover:bg-slate-700/50 md:hover:bg-transparent transition">
+                    <div class="relative w-20 h-20 md:w-full md:aspect-square flex-shrink-0 bg-slate-800 rounded-lg overflow-hidden md:mb-4 shadow-lg md:border border-slate-700 md:group-hover:border-emerald-500 transition">
+                        <!-- src="" 안에 앨범 커버 이미지 파일명을 넣으세요 (예: mysea.jpg) -->
+                        <img src="mysea.jpeg" alt="나의 바다" class="object-cover w-full h-full md:group-hover:scale-110 transition duration-500 opacity-80 md:group-hover:opacity-100">
+                         <!-- Desktop Play Icon -->
+                        <div class="hidden md:flex absolute inset-0 items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
                             <i class="fas fa-play-circle text-5xl text-white/80 group-hover:text-emerald-400 transition scale-90 group-hover:scale-100"></i>
                         </div>
                     </div>
-                    <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition">나의 바다</h3>
-                    <p class="text-xs text-slate-400">Digital Single</p>
-                </div>
+                    <div class="ml-4 md:ml-0">
+                        <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition">나의 바다</h3>
+                        <p class="text-xs text-slate-400">Digital Single</p>
+                    </div>
+                    <!-- Mobile Play Icon -->
+                    <div class="ml-auto md:hidden text-emerald-400">
+                        <i class="fas fa-external-link-alt text-xl"></i>
+                    </div>
+                </a>
 
                 <!-- Song 2 -->
-                <div class="group cursor-pointer fade-up delay-200">
-                    <div class="relative aspect-square bg-slate-800 rounded-lg overflow-hidden mb-4 shadow-lg border border-slate-700 group-hover:border-emerald-500 transition">
-                        <img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?q=80&w=1974&auto=format&fit=crop" alt="이별에도 다 연습이 필요해" class="object-cover w-full h-full group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
-                         <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+                <a href="https://youtu.be/0-PEKPQ-KP8?si=Wk9qVonIEKy2sVGX" target="_blank" class="group block fade-up delay-200 flex items-center md:block bg-slate-800 md:bg-transparent p-3 md:p-0 rounded-lg md:rounded-none border border-slate-700 md:border-none hover:bg-slate-700/50 md:hover:bg-transparent transition">
+                    <div class="relative w-20 h-20 md:w-full md:aspect-square flex-shrink-0 bg-slate-800 rounded-lg overflow-hidden md:mb-4 shadow-lg md:border border-slate-700 md:group-hover:border-emerald-500 transition">
+                        <img src="bye.png" alt="이별에도 다 연습이 필요해" class="object-cover w-full h-full md:group-hover:scale-110 transition duration-500 opacity-80 md:group-hover:opacity-100">
+                         <div class="hidden md:flex absolute inset-0 items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
                             <i class="fas fa-play-circle text-5xl text-white/80 group-hover:text-emerald-400 transition scale-90 group-hover:scale-100"></i>
                         </div>
                     </div>
-                    <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition">이별에도 다 연습이 필요해</h3>
-                    <p class="text-xs text-slate-400">Digital Single</p>
-                </div>
-
-                <!-- Song 3 -->
-                <div class="group cursor-pointer fade-up delay-300">
-                    <div class="relative aspect-square bg-slate-800 rounded-lg overflow-hidden mb-4 shadow-lg border border-slate-700 group-hover:border-emerald-500 transition">
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop" alt="문득" class="object-cover w-full h-full group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
-                         <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
-                            <i class="fas fa-play-circle text-5xl text-white/80 group-hover:text-emerald-400 transition scale-90 group-hover:scale-100"></i>
-                        </div>
+                    <div class="ml-4 md:ml-0">
+                        <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition">이별에도 다 연습이 필요해</h3>
+                        <p class="text-xs text-slate-400">Digital Single</p>
                     </div>
-                    <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition">문득</h3>
-                    <p class="text-xs text-slate-400">Digital Single</p>
-                </div>
-
-                <!-- Song 4 -->
-                <div class="group cursor-pointer fade-up delay-400">
-                    <div class="relative aspect-square bg-slate-800 rounded-lg overflow-hidden mb-4 shadow-lg border border-slate-700 group-hover:border-emerald-500 transition">
-                        <img src="https://images.unsplash.com/photo-1621360841013-c768371e93cf?q=80&w=1974&auto=format&fit=crop" alt="아띠아띠" class="object-cover w-full h-full group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
-                         <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
-                            <i class="fas fa-play-circle text-5xl text-white/80 group-hover:text-emerald-400 transition scale-90 group-hover:scale-100"></i>
-                        </div>
+                    <div class="ml-auto md:hidden text-emerald-400">
+                        <i class="fas fa-external-link-alt text-xl"></i>
                     </div>
-                    <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition">아띠아띠</h3>
-                    <p class="text-xs text-slate-400">Digital Single</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Creator Section -->
-    <section id="creator" class="py-24 px-6 bg-white">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16 fade-up">
-                <span class="text-slate-500 font-bold tracking-widest text-sm uppercase">YouTube Channel</span>
-                <h2 class="serif text-3xl md:text-4xl font-bold mt-2 text-slate-900">Content Creator</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Channel 1 -->
-                <a href="https://www.youtube.com/@keewon" target="_blank" class="group block bg-slate-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition duration-300 border border-slate-100 fade-up">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center text-3xl shadow-lg">
-                            <i class="fab fa-youtube"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900">안녕내이름은김기원</h3>
-                            <p class="text-sm text-slate-500">Vlog & Lifestyle</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-600 mb-4 line-clamp-2">
-                        Pixid, 글램, 코리아해럴드 등 다양한 채널에 출연하며 쌓은 입담과 솔직한 일상을 공유합니다.
-                    </p>
-                    <span class="text-red-600 font-bold text-sm group-hover:underline">채널 방문하기 &rarr;</span>
                 </a>
 
-                <!-- Channel 2 -->
-                <a href="#" target="_blank" class="group block bg-slate-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition duration-300 border border-slate-100 fade-up delay-100">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-3xl shadow-lg">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900">Keewonderland</h3>
-                            <p class="text-sm text-slate-500">Music & Live</p>
+                <!-- Song 3 -->
+                <a href="https://youtu.be/AmXJgtWHEHc?si=OwejOcpzaWzKxmrg" target="_blank" class="group block fade-up delay-300 flex items-center md:block bg-slate-800 md:bg-transparent p-3 md:p-0 rounded-lg md:rounded-none border border-slate-700 md:border-none hover:bg-slate-700/50 md:hover:bg-transparent transition">
+                    <div class="relative w-20 h-20 md:w-full md:aspect-square flex-shrink-0 bg-slate-800 rounded-lg overflow-hidden md:mb-4 shadow-lg md:border border-slate-700 md:group-hover:border-emerald-500 transition">
+                        <img src="suddenly.jpeg" alt="문득" class="object-cover w-full h-full md:group-hover:scale-110 transition duration-500 opacity-80 md:group-hover:opacity-100">
+                         <div class="hidden md:flex absolute inset-0 items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+                            <i class="fas fa-play-circle text-5xl text-white/80 group-hover:text-emerald-400 transition scale-90 group-hover:scale-100"></i>
                         </div>
                     </div>
-                    <p class="text-slate-600 mb-4 line-clamp-2">
-                        기원더랜드. 기원 님의 음악적 색깔을 보여주는 라이브 영상과 커버곡을 만나볼 수 있는 공간입니다.
-                    </p>
-                    <span class="text-purple-600 font-bold text-sm group-hover:underline">채널 방문하기 &rarr;</span>
+                    <div class="ml-4 md:ml-0">
+                        <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition">문득</h3>
+                        <p class="text-xs text-slate-400">Digital Single</p>
+                    </div>
+                    <div class="ml-auto md:hidden text-emerald-400">
+                        <i class="fas fa-external-link-alt text-xl"></i>
+                    </div>
+                </a>
+
+                <!-- Song 4 -->
+                <a href="https://youtu.be/o3cO0EhINfE?si=g5MlB85V29Arou_4" target="_blank" class="group block fade-up delay-400 flex items-center md:block bg-slate-800 md:bg-transparent p-3 md:p-0 rounded-lg md:rounded-none border border-slate-700 md:border-none hover:bg-slate-700/50 md:hover:bg-transparent transition">
+                    <div class="relative w-20 h-20 md:w-full md:aspect-square flex-shrink-0 bg-slate-800 rounded-lg overflow-hidden md:mb-4 shadow-lg md:border border-slate-700 md:group-hover:border-emerald-500 transition">
+                        <img src="lovein30.jpeg" alt="아띠아띠" class="object-cover w-full h-full md:group-hover:scale-110 transition duration-500 opacity-80 md:group-hover:opacity-100">
+                         <div class="hidden md:flex absolute inset-0 items-center justify-center bg-black/30 group-hover:bg-black/10 transition">
+                            <i class="fas fa-play-circle text-5xl text-white/80 group-hover:text-emerald-400 transition scale-90 group-hover:scale-100"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4 md:ml-0">
+                        <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition">서른의 사랑</h3>
+                        <p class="text-xs text-slate-400">Digital Single</p>
+                    </div>
+                    <div class="ml-auto md:hidden text-emerald-400">
+                        <i class="fas fa-external-link-alt text-xl"></i>
+                    </div>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer / Contact -->
-    <footer id="contact" class="bg-slate-900 text-white py-20 border-t border-slate-800">
+    <footer id="contact" class="bg-slate-900 text-white py-16 md:py-20 border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-6 text-center fade-up">
-            <h2 class="serif text-3xl font-bold mb-8">Contact</h2>
-            <p class="text-slate-400 mb-12">
+            <h2 class="serif text-2xl md:text-3xl font-bold mb-6 md:mb-8">Contact</h2>
+            <p class="text-slate-400 text-sm md:text-base mb-10 md:mb-12">
                 공연 섭외, 작곡 의뢰, 혹은 음악 이야기.<br>
                 피터팬의 문은 언제나 열려있습니다.
             </p>
             
-            <div class="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-                <a href="mailto:onlykkw@naver.com" class="flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-emerald-600 transition group">
-                    <i class="fas fa-envelope text-3xl mb-4 text-emerald-400 group-hover:text-white transition"></i>
-                    <span class="text-sm font-bold">Email</span>
-                    <span class="text-xs text-slate-400 mt-1 group-hover:text-white/80">onlykkw@naver.com</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <a href="mailto:onlykkw@naver.com" class="flex flex-row md:flex-col items-center justify-center md:justify-start p-4 md:p-6 bg-slate-800 rounded-xl hover:bg-emerald-600 transition group gap-4 md:gap-0">
+                    <i class="fas fa-envelope text-2xl md:text-3xl md:mb-4 text-emerald-400 group-hover:text-white transition"></i>
+                    <div class="text-left md:text-center">
+                        <span class="block text-sm font-bold">Email</span>
+                        <span class="text-xs text-slate-400 mt-1 group-hover:text-white/80">onlykkw@naver.com</span>
+                    </div>
                 </a>
-                <a href="tel:010-9577-6023" class="flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-emerald-600 transition group">
-                    <i class="fas fa-phone text-3xl mb-4 text-emerald-400 group-hover:text-white transition"></i>
-                    <span class="text-sm font-bold">Phone</span>
-                    <span class="text-xs text-slate-400 mt-1 group-hover:text-white/80">010-9577-6023</span>
+                <a href="tel:010-9577-6023" class="flex flex-row md:flex-col items-center justify-center md:justify-start p-4 md:p-6 bg-slate-800 rounded-xl hover:bg-emerald-600 transition group gap-4 md:gap-0">
+                    <i class="fas fa-phone text-2xl md:text-3xl md:mb-4 text-emerald-400 group-hover:text-white transition"></i>
+                    <div class="text-left md:text-center">
+                        <span class="block text-sm font-bold">Phone</span>
+                        <span class="text-xs text-slate-400 mt-1 group-hover:text-white/80">010-9577-6023</span>
+                    </div>
                 </a>
-                <a href="https://instagram.com/keewonee91" target="_blank" class="flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-emerald-600 transition group">
-                    <i class="fab fa-instagram text-3xl mb-4 text-emerald-400 group-hover:text-white transition"></i>
-                    <span class="text-sm font-bold">Instagram</span>
-                    <span class="text-xs text-slate-400 mt-1 group-hover:text-white/80">@keewonee91</span>
+                <a href="https://instagram.com/keewonee91" target="_blank" class="flex flex-row md:flex-col items-center justify-center md:justify-start p-4 md:p-6 bg-slate-800 rounded-xl hover:bg-emerald-600 transition group gap-4 md:gap-0">
+                    <i class="fab fa-instagram text-2xl md:text-3xl md:mb-4 text-emerald-400 group-hover:text-white transition"></i>
+                    <div class="text-left md:text-center">
+                        <span class="block text-sm font-bold">Instagram</span>
+                        <span class="text-xs text-slate-400 mt-1 group-hover:text-white/80">@keewonee91</span>
+                    </div>
                 </a>
             </div>
             
-            <div class="mt-20 text-xs text-slate-600">
+            <div class="mt-12 md:mt-20 text-xs text-slate-600">
                 &copy; 2025 Kim Keewon. All Rights Reserved.
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Toggle Mobile Menu
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            const icon = document.getElementById('menu-icon');
+            
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                menu.classList.add('open');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
         }
 
         // Scroll Animation Observer
