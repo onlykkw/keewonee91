@@ -369,18 +369,18 @@
                     </h2>
                     <p class="text-slate-600 leading-relaxed mb-8 text-lg">
                         대본 속 활자에 숨결을 불어넣어 인물의 감정을 노래로 만듭니다.<br>
-                        드라마틱한 전개와 기억에 남는 멜로디로 관객의 마음에 닿는 음악을 지향합니다.
+                        드라마틱한 전개와 섬세한 오케스트레이션으로 관객의 마음에 닿는 음악을 지향합니다.
                     </p>
                     
                     <!-- Featured Works List (Example) -->
                     <div class="space-y-4 border-l-2 border-indigo-100 pl-6">
                         <div class="group">
-                            <h4 class="font-bold text-slate-800 text-xl group-hover:text-indigo-600 transition">Musical '리버티'</h4>
+                            <h4 class="font-bold text-slate-800 text-xl group-hover:text-indigo-600 transition">Musical 'Example Title'</h4>
                             <p class="text-sm text-slate-500">Composer / Music Director</p>
                         </div>
                         <!-- Add more works here -->
                         <div class="group">
-                            <h4 class="font-bold text-slate-800 text-xl group-hover:text-indigo-600 transition">Number 'Next in line'</h4>
+                            <h4 class="font-bold text-slate-800 text-xl group-hover:text-indigo-600 transition">Project 'Untitled'</h4>
                             <p class="text-sm text-slate-500">Main Theme Composition</p>
                         </div>
                     </div>
@@ -413,71 +413,95 @@
 
     <!-- NEW SECTION: Media & Creator (YouTube Appearances) -->
     <section id="media" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
-        <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12 fade-up">
                 <span class="text-red-500 font-bold tracking-widest text-sm uppercase">On Air & YouTube</span>
                 <h2 class="serif text-3xl md:text-4xl font-bold mt-2 text-slate-900">Media Appearances</h2>
                 <p class="text-slate-500 mt-4">방송 출연 하이라이트 및 크리에이터 활동입니다.</p>
             </div>
 
-            <!-- Video Grid: Changed to 2 columns on medium screens for 4 items -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16">
+            <!-- Video Grid: Changed to 4 columns on large screens to fit in one row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
                 
-                <!-- Item 1: KBS 아침마당 -->
+                <!-- Item 1: KBS 아침마당 (Thumbnail Link Type) -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 fade-up group">
-                    <div class="relative aspect-video bg-slate-200">
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/FPCHtJyeW3I?si=K7R7VgYb0EFGH9Va" title="KBS 아침마당" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded">TV Show</span>
+                    <!-- Link to YouTube instead of Iframe to prevent Error 153 -->
+                    <a href="https://www.youtube.com/watch?v=FPCHtJyeW3I" target="_blank" class="block relative aspect-video bg-slate-200 overflow-hidden group">
+                        <!-- Thumbnail Image -->
+                        <img src="https://img.youtube.com/vi/FPCHtJyeW3I/hqdefault.jpg" alt="KBS 아침마당" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <!-- Play Icon Overlay -->
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 transition">
+                                <i class="fas fa-play text-2xl text-red-600"></i>
+                            </div>
                         </div>
-                        <h3 class="font-bold text-lg text-slate-800 mb-1 group-hover:text-red-600 transition">KBS 아침마당 도전 꿈의 무대</h3>
-                        <p class="text-sm text-slate-500 line-clamp-2">친근한 매력과 감동적인 무대로 화제가 되었던 출연 영상입니다.</p>
+                    </a>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-1 rounded">TV Show</span>
+                        </div>
+                        <h3 class="font-bold text-base text-slate-800 mb-1 group-hover:text-red-600 transition line-clamp-1">KBS 아침마당 도전 꿈의 무대</h3>
+                        <p class="text-xs text-slate-500 line-clamp-2">친근한 매력과 감동적인 무대로 화제가 되었던 출연 영상입니다.</p>
                     </div>
                 </div>
 
-                <!-- Item 2: KBS 다큐온 -->
+                <!-- Item 2: KBS 다큐온 (Thumbnail Link Type) -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 fade-up delay-100 group">
-                    <div class="relative aspect-video bg-slate-200">
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/XX77XR_9ACE?si=A_1BfjvsLQGiwZXP" title="KBS 다큐온" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded">Documentary</span>
+                    <a href="https://www.youtube.com/watch?v=XX77XR_9ACE" target="_blank" class="block relative aspect-video bg-slate-200 overflow-hidden group">
+                        <img src="https://img.youtube.com/vi/XX77XR_9ACE/hqdefault.jpg" alt="KBS 다큐온" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 transition">
+                                <i class="fas fa-play text-2xl text-blue-600"></i>
+                            </div>
                         </div>
-                        <h3 class="font-bold text-lg text-slate-800 mb-1 group-hover:text-blue-600 transition">KBS 다큐온 '마음을 잇다'</h3>
-                        <p class="text-sm text-slate-500 line-clamp-2">싱어송라이터 김기원의 진솔한 삶과 음악 이야기를 담은 다큐멘터리.</p>
+                    </a>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-blue-100 text-blue-600 text-[10px] font-bold px-2 py-1 rounded">Documentary</span>
+                        </div>
+                        <h3 class="font-bold text-base text-slate-800 mb-1 group-hover:text-blue-600 transition line-clamp-1">KBS 다큐온 '마음을 잇다'</h3>
+                        <p class="text-xs text-slate-500 line-clamp-2">싱어송라이터 김기원의 진솔한 삶과 음악 이야기를 담은 다큐멘터리.</p>
                     </div>
                 </div>
 
-                <!-- Item 3: KBS Joy 무엇이든 물어보살 (NEW) -->
+                <!-- Item 3: KBS Joy 무엇이든 물어보살 (Thumbnail Link Type) -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 fade-up delay-200 group">
-                    <div class="relative aspect-video bg-slate-200">
-                         <!-- Replace 'your_video_id_3' with the actual YouTube ID for Ask Anything -->
-                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Zm9_tKz7LCI?si=x-LTCwdYCqdZnr5i" title="무엇이든 물어보살" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">Entertainment</span>
+                    <a href="https://www.youtube.com/watch?v=Zm9_tKz7LCI" target="_blank" class="block relative aspect-video bg-slate-200 overflow-hidden group">
+                        <img src="https://img.youtube.com/vi/Zm9_tKz7LCI/hqdefault.jpg" alt="무엇이든 물어보살" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 transition">
+                                <i class="fas fa-play text-2xl text-yellow-600"></i>
+                            </div>
                         </div>
-                        <h3 class="font-bold text-lg text-slate-800 mb-1 group-hover:text-yellow-600 transition">KBS Joy 무엇이든 물어보살</h3>
-                        <p class="text-sm text-slate-500 line-clamp-2">보살팅 특집 출연. 솔직하고 유쾌한 입담으로 시청자들에게 웃음을 선사했습니다.</p>
+                    </a>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-yellow-100 text-yellow-700 text-[10px] font-bold px-2 py-1 rounded">Entertainment</span>
+                        </div>
+                        <h3 class="font-bold text-base text-slate-800 mb-1 group-hover:text-yellow-600 transition line-clamp-1">KBS Joy 무엇이든 물어보살</h3>
+                        <p class="text-xs text-slate-500 line-clamp-2">보살팅 특집 출연. 솔직하고 유쾌한 입담으로 시청자들에게 웃음을 선사했습니다.</p>
                     </div>
                 </div>
 
-                <!-- Item 4: YouTube Creator / Link Collection -->
+                <!-- Item 4: YouTube Creator / Link Collection (Thumbnail Link Type) -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 fade-up delay-300 group">
-                    <div class="relative aspect-video bg-slate-200 group">
-                         <!-- Replace 'your_video_id_4' with a representative video ID -->
-                         <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PLFsfLQkRTGBsaPZvaGYQcunSR4IqXEyyI" title="YouTube Creator" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-5">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-purple-100 text-purple-600 text-xs font-bold px-2 py-1 rounded">Creator Activity</span>
+                    <!-- Link to YouTube Playlist -->
+                    <a href="https://www.youtube.com/playlist?list=PLFsfLQkRTGBsaPZvaGYQcunSR4IqXEyyI" target="_blank" class="block relative aspect-video bg-slate-200 overflow-hidden group">
+                        <!-- Studio/Music Vibe Image -->
+                        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Creator Activity" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <!-- List Icon Overlay -->
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition">
+                                <i class="fas fa-list-ul text-2xl text-purple-600"></i>
+                            </div>
                         </div>
-                        <h3 class="font-bold text-lg text-slate-800 mb-1 group-hover:text-purple-600 transition">안녕내이름은김기원 & More</h3>
-                        <p class="text-sm text-slate-500 line-clamp-2">유튜브 크리에이터로서의 다양한 활동과 커버곡 영상을 모았습니다.</p>
+                    </a>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-purple-100 text-purple-600 text-[10px] font-bold px-2 py-1 rounded">Creator Activity</span>
+                        </div>
+                        <h3 class="font-bold text-base text-slate-800 mb-1 group-hover:text-purple-600 transition line-clamp-1">안녕내이름은김기원 & More</h3>
+                        <p class="text-xs text-slate-500 line-clamp-2">유튜브 크리에이터로서의 다양한 활동과 커버곡 영상을 모았습니다.</p>
                     </div>
                 </div>
 
